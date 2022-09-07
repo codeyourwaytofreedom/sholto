@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald');
+
+/* base styles */
+* {
+  margin: 0;
+  font-family: 'Oswald', serif;
+}
+
+.panel {
+        position: relative;
+        width: 90%; left:5%;
+        padding-top: 2%;
+
+}
+
+.panel__table {
+    border:1px solid silver;
+    border-radius: 1%;
+    padding: 0.3%;
+    width: 70%;
+    margin-left: 15%;
+}
+
+.panel__tablecell, .panel__tablecell--change, .panel__tablecell--name {
+    font-size: 1.5em;
+    border: 1px solid rgb(175, 151, 119);
+    border-radius: 3%;
+}
+
+
+
+.panel__tablecell--position{
+
+  background-color: #F0E68C;
+  font-size: 2em;
+  border-radius: 3%;
+
+}
+
+.searchbar{
+  display: grid;
+  position: relative;
+  width: 40%;
+  left: 30%;
+}
+
+.searchbar__text{
+  font-size: 1.7em;
+  padding-left: 5%;
+}
