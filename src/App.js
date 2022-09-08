@@ -33,8 +33,8 @@ function App() {
       <Router>
         <Switch>
             <Route path="/">
-            <br></br><h1>Search Bar here</h1>
-            {/* {variables && <Search variables={variables} ></Search>} */}
+            <br></br><h1>Crypto Currencies At a Glance</h1>
+            {/* {variables && <Search variables={variables} error={error} loading={loading}></Search>} */}
             {variables && <Criptos variables={variables} error={error} loading={loading} ></Criptos>}
             
             

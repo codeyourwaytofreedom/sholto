@@ -1,5 +1,9 @@
 import './criptos.css';
 import { useState } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHeart } from '@fortawesome/free-solid-svg-icons'
+
+
 
 
 // https://api.coincap.io/v2/assets
@@ -19,37 +23,55 @@ const Criptos = ({variables, error, loading}) => {
 
                     {         variables &&        
                     <div className="searchbar">
-                    <input className="searchbar__text" type="text"
-                        value={searched_text} required
-                        onChange={(e) => {setST(e.target.value)}}
-                        placeholder="search for coins"></input>
-
-                    <div>
-                        
+                        <input className="searchbar__text" type="text"
+                            value={searched_text} required
+                            onChange={(e) => {setST(e.target.value)}}
+                            placeholder="search for coins"></input>
                     </div>
-
-                </div>
                 }
 
                 {
-                    variables &&    searched_text !== "" && 
-                    
-                    variables.slice(0,30).map( (varr) =>
-                            (   searched_text.length > 2 && varr.name.toLowerCase().includes(searched_text.toLowerCase()) &&
-                                    console.log(varr.name) 
+                    variables &&    searched_text.length > 2 && 
+                    <table className='panel__table'>
+                    <tbody>
+                                <tr className='panel__tablerow--title' key="title">
+                                    <th className='panel__tablecell--position'>+</th>
+                                    <th className='panel__tablecell'> Favs </th>
+                                    <th className='panel__tablecell' >Coin</th>
+                                    <th className='panel__tablecell'>Price</th>
+                                    <th id='change' className='panel__tablecell--change'>Change</th>
+
+                                </tr>
+
+                    {variables.slice(0,30).map( (varr) =>
+                            (   varr.name.toLowerCase().includes(searched_text.toLowerCase()) &&
+                                    
+                            <tr className='panel__tablerow' key={varr.id}>
+                                    <th className='panel__tablecell--position'>{varr.rank}</th>
+                                    <th className='panel__tablecell'>   <FontAwesomeIcon icon={faHeart} style={{color:"silver"}} />   </th>
+                                    <th className='panel__tablecell--name' style={{color: varr.changePercent24Hr.includes("-") ? "red" : "green"}}>{varr.name}</th>
+                                    <th className='panel__tablecell' style={{color: varr.changePercent24Hr.includes("-") ? "red" : "green"}}>{varr.priceUsd}</th>
+                                    <th id='change' className='panel__tablecell--change' style={{color: varr.changePercent24Hr.includes("-") ? "red" : "green"}}>
+                                        {varr.changePercent24Hr} 
+                                        </th>
+
+                            </tr>
                                                                  
                             )
-                            )
+                            )}
+                    </tbody>
+                    </table>
                 }
 
                 {
-                    variables &&    searched_text === "" && 
+                    variables &&    searched_text.length < 3 && 
                     
                     <table className='panel__table'>
                     <tbody>
                                 
                                 <tr className='panel__tablerow--title' key="title">
-                                    <th className='panel__tablecell--position'>x</th>
+                                    <th className='panel__tablecell--position'>+</th>
+                                    <th className='panel__tablecell'>Favs</th>
                                     <th className='panel__tablecell' >Coin</th>
                                     <th className='panel__tablecell'>Price</th>
                                     <th id='change' className='panel__tablecell--change'>Change</th>
@@ -58,13 +80,14 @@ const Criptos = ({variables, error, loading}) => {
                         {
                             variables.slice(0,30).map( (varr) =>
                             (      
-                                    
+                                
                                 <tr className='panel__tablerow' key={varr.id}>
                                     <th className='panel__tablecell--position'>{varr.rank}</th>
-                                    <th className='panel__tablecell--name' >{varr.name}</th>
-                                    <th className='panel__tablecell'>{varr.priceUsd}</th>
-                                    <th id='change' className='panel__tablecell--change'>
-                                        {varr.changePercent24Hr.includes("-") ? "a" : "b"} 
+                                    <th className='panel__tablecell'>   <FontAwesomeIcon icon={faHeart} style={{color:"silver"}} />   </th>
+                                    <th className='panel__tablecell--name' style={{color: varr.changePercent24Hr.includes("-") ? "red" : "green"}}>{varr.name}</th>
+                                    <th className='panel__tablecell' style={{color: varr.changePercent24Hr.includes("-") ? "red" : "green"}}>{varr.priceUsd}</th>
+                                    <th id='change' className='panel__tablecell--change' style={{color: varr.changePercent24Hr.includes("-") ? "red" : "green"}}>
+                                        {varr.changePercent24Hr} 
                                         </th>
 
                                 </tr>

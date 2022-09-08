@@ -10,19 +10,18 @@
         position: relative;
         width: 90%; left:5%;
         padding-top: 2%;
+        margin-bottom: 4%;
 
 }
 
 .panel__table {
-    border:1px solid silver;
-    border-radius: 1%;
-    padding: 0.3%;
     width: 70%;
     margin-left: 15%;
 }
 
 .panel__tablecell, .panel__tablecell--change, .panel__tablecell--name {
     font-size: 1.5em;
+    font-weight: normal;
     border: 1px solid rgb(175, 151, 119);
     border-radius: 3%;
 }
@@ -31,17 +30,19 @@
 
 .panel__tablecell--position{
 
-  background-color: #F0E68C;
+  border: 1px solid rgb(175, 151, 119);
   font-size: 2em;
-  border-radius: 3%;
 
 }
+
 
 .searchbar{
   display: grid;
   position: relative;
   width: 40%;
   left: 30%;
+  margin-bottom: 2%;
+  
 }
 
 .searchbar__text{
