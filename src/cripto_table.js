@@ -1,7 +1,7 @@
 import './criptos.css';
 import { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart } from '@fortawesome/free-solid-svg-icons'
+import { faHeart, faHeartBroken } from '@fortawesome/free-solid-svg-icons'
 
 
 
@@ -12,6 +12,27 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons'
 const Criptos = ({variables, error, loading}) => {
 
     const [searched_text, setST] = useState("")
+    const [ar,setAr] = useState(["a"])
+    const heart = <FontAwesomeIcon size={"xl"} icon={faHeart} style={{color:"orange", cursor: 'pointer'}} />
+    const brokenheart = <FontAwesomeIcon  size={"xl"} icon={faHeartBroken} style={{color:"black", cursor: 'pointer'}} />
+
+    const check_ar = (a) => { 
+        console.log(a)
+        // setAr()
+        if (!ar.includes(a))
+        {setAr([...ar, a]);}
+        else{setAr(ar.filter((x) => x!== a))}
+        
+        console.log(ar)
+    }
+
+    const handleHeart = (e) => {
+                    if (e.target.style.color !== "orange")
+                    {e.target.style.color = "orange"}
+                    else{e.target.style.color = "silver"}
+
+                   
+    };
 
     if (error) return `Error: ${error.message}`;
     
@@ -45,10 +66,10 @@ const Criptos = ({variables, error, loading}) => {
 
                     {variables.slice(0,30).map( (varr) =>
                             (   varr.name.toLowerCase().includes(searched_text.toLowerCase()) &&
-                                    
+                                
                             <tr className='panel__tablerow' key={varr.id}>
                                     <th className='panel__tablecell--position'>{varr.rank}</th>
-                                    <th className='panel__tablecell'>   <FontAwesomeIcon icon={faHeart} style={{color:"silver"}} />   </th>
+                                    <th onClick={() => check_ar(varr.name)}  className='panel__tablecell'>   { ar.includes(varr.name) ? heart : brokenheart}  </th>
                                     <th className='panel__tablecell--name' style={{color: varr.changePercent24Hr.includes("-") ? "red" : "green"}}>{varr.name}</th>
                                     <th className='panel__tablecell' style={{color: varr.changePercent24Hr.includes("-") ? "red" : "green"}}>{varr.priceUsd}</th>
                                     <th id='change' className='panel__tablecell--change' style={{color: varr.changePercent24Hr.includes("-") ? "red" : "green"}}>
@@ -80,10 +101,10 @@ const Criptos = ({variables, error, loading}) => {
                         {
                             variables.slice(0,30).map( (varr) =>
                             (      
-                                
+
                                 <tr className='panel__tablerow' key={varr.id}>
                                     <th className='panel__tablecell--position'>{varr.rank}</th>
-                                    <th className='panel__tablecell'>   <FontAwesomeIcon icon={faHeart} style={{color:"silver"}} />   </th>
+                                    <th onClick={() => check_ar(varr.name)} className='panel__tablecell' >  { ar.includes(varr.name) ? heart : brokenheart} </th>
                                     <th className='panel__tablecell--name' style={{color: varr.changePercent24Hr.includes("-") ? "red" : "green"}}>{varr.name}</th>
                                     <th className='panel__tablecell' style={{color: varr.changePercent24Hr.includes("-") ? "red" : "green"}}>{varr.priceUsd}</th>
                                     <th id='change' className='panel__tablecell--change' style={{color: varr.changePercent24Hr.includes("-") ? "red" : "green"}}>
@@ -109,3 +130,4 @@ const Criptos = ({variables, error, loading}) => {
 export default Criptos;
 
 
+// {ar.includes(varr.rank) ? varr.rank : ""}
