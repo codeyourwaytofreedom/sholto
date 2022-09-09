@@ -1,7 +1,6 @@
 import './App.css';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Criptos from './cripto_table';
-import Search from './search';
 import axios from "axios";
 import { useEffect, useState } from 'react';
 

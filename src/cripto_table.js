@@ -2,7 +2,7 @@ import './criptos.css';
 import { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart, faHeartBroken } from '@fortawesome/free-solid-svg-icons'
-
+import Modal from './Modal';
 
 
 
@@ -11,8 +11,10 @@ import { faHeart, faHeartBroken } from '@fortawesome/free-solid-svg-icons'
 
 const Criptos = ({variables, error, loading}) => {
 
+    const [favs_open, setOpen ] = useState(true)
+
     const [searched_text, setST] = useState("")
-    const [ar,setAr] = useState(["a"])
+    const [ar,setAr] = useState([])
     const heart = <FontAwesomeIcon size={"xl"} icon={faHeart} style={{color:"orange", cursor: 'pointer'}} />
     const brokenheart = <FontAwesomeIcon  size={"xl"} icon={faHeartBroken} style={{color:"black", cursor: 'pointer'}} />
 
@@ -26,13 +28,9 @@ const Criptos = ({variables, error, loading}) => {
         console.log(ar)
     }
 
-    const handleHeart = (e) => {
-                    if (e.target.style.color !== "orange")
-                    {e.target.style.color = "orange"}
-                    else{e.target.style.color = "silver"}
-
-                   
-    };
+    const close_modal = () => {
+        setOpen(false)
+    }
 
     if (error) return `Error: ${error.message}`;
     
@@ -119,6 +117,8 @@ const Criptos = ({variables, error, loading}) => {
                     </tbody>
                     </table>
                 }
+
+                <Modal open={favs_open} close={close_modal} favs = {ar}></Modal>
 
             </div>
             

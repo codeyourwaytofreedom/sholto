@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald');
+
+/* base styles */
+* {
+  margin: 0;
+  font-family: 'Oswald', serif;
+}
+
+.modal-favs{
+
+    border: 2px solid khaki;
+    width: 50%;
+    
+}
