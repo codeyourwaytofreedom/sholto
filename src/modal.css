@@ -7,8 +7,27 @@
 }
 
 .modal-favs{
-
+    position: relative;
     border: 2px solid khaki;
-    width: 50%;
-    
+    background-color: silver;
+    width: 50%; left:25%;
+    height: auto;
+    z-index: 3;
+    top:30%;
+    opacity: 0.85;
+}
+.modal-favs__favitem{
+  display: grid;
+  grid-template-columns: 2fr 3fr 3fr;
+  border: 1px solid darkmagenta;
+  align-items: center;
+}
+
+.modal-favs__favitem--cell{
+  display: grid;
+  justify-content:start ;
+  border: 1px solid red;
+  font-size: 1.5vw;
+  padding: 3%;
+  padding-left: 4%;
 }

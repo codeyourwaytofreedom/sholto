@@ -118,7 +118,7 @@ const Criptos = ({variables, error, loading}) => {
                     </table>
                 }
 
-                <Modal open={favs_open} close={close_modal} favs = {ar}></Modal>
+                <Modal vars={variables} open={favs_open} close={close_modal} favs = {ar}></Modal>
 
             </div>
             
