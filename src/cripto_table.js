@@ -69,9 +69,9 @@ const Criptos = ({variables, error, loading}) => {
                                     <th className='panel__tablecell--position'>{varr.rank}</th>
                                     <th onClick={() => check_ar(varr.name)}  className='panel__tablecell'>   { ar.includes(varr.name) ? heart : brokenheart}  </th>
                                     <th className='panel__tablecell--name' style={{color: varr.changePercent24Hr.includes("-") ? "red" : "green"}}>{varr.name}</th>
-                                    <th className='panel__tablecell' style={{color: varr.changePercent24Hr.includes("-") ? "red" : "green"}}>{varr.priceUsd}</th>
+                                    <th className='panel__tablecell' style={{color: varr.changePercent24Hr.includes("-") ? "red" : "green"}}>${varr.priceUsd.substring(0, 11)}</th>
                                     <th id='change' className='panel__tablecell--change' style={{color: varr.changePercent24Hr.includes("-") ? "red" : "green"}}>
-                                        {varr.changePercent24Hr} 
+                                        {varr.changePercent24Hr.substring(0, 11)} 
                                         </th>
 
                             </tr>
@@ -104,9 +104,9 @@ const Criptos = ({variables, error, loading}) => {
                                     <th className='panel__tablecell--position'>{varr.rank}</th>
                                     <th onClick={() => check_ar(varr.name)} className='panel__tablecell' >  { ar.includes(varr.name) ? heart : brokenheart} </th>
                                     <th className='panel__tablecell--name' style={{color: varr.changePercent24Hr.includes("-") ? "red" : "green"}}>{varr.name}</th>
-                                    <th className='panel__tablecell' style={{color: varr.changePercent24Hr.includes("-") ? "red" : "green"}}>{varr.priceUsd}</th>
+                                    <th className='panel__tablecell' style={{color: varr.changePercent24Hr.includes("-") ? "red" : "green"}}>${varr.priceUsd.substring(0, 11)}</th>
                                     <th id='change' className='panel__tablecell--change' style={{color: varr.changePercent24Hr.includes("-") ? "red" : "green"}}>
-                                        {varr.changePercent24Hr} 
+                                        {varr.changePercent24Hr.substring(0, 11)} 
                                         </th>
 
                                 </tr>

@@ -6,28 +6,57 @@
   font-family: 'Oswald', serif;
 }
 
+
+
+
 .modal-favs{
     position: relative;
-    border: 2px solid khaki;
-    background-color: silver;
+    border: 2px solid orange;
+    border-radius: 2%;
+    background-color: black;
     width: 50%; left:25%;
     height: auto;
     z-index: 3;
     top:30%;
-    opacity: 0.85;
+    padding: 3%;
+    box-sizing: border-box;
+
 }
+
+
+.button_close_modal{
+
+  position: absolute;
+  right: 5%;
+}
+
+
 .modal-favs__favitem{
   display: grid;
   grid-template-columns: 2fr 3fr 3fr;
-  border: 1px solid darkmagenta;
   align-items: center;
+  gap: 2%;
+  margin-bottom: 1%;
 }
 
-.modal-favs__favitem--cell{
+.modal-favs__favitem__cell{
   display: grid;
   justify-content:start ;
-  border: 1px solid red;
   font-size: 1.5vw;
   padding: 3%;
-  padding-left: 4%;
+  padding-left: 5%;
+  color:white;
+  border-bottom: 1px solid orange;
+  margin-bottom: 1%;
+
+}
+
+.modal-favs__favitem__cell--name{
+    color: orange;
+    font-size: 1.5vw;
+    display: grid;
+  justify-content:start ;
+  padding-left: 10%;
+  border-bottom: 1px solid orange;
+  padding: 3%;
 }
