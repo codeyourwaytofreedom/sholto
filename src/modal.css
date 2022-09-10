@@ -7,8 +7,6 @@
 }
 
 
-
-
 .modal-favs{
     position: relative;
     border: 2px solid orange;
@@ -16,18 +14,22 @@
     background-color: black;
     width: 50%; left:25%;
     height: auto;
-    z-index: 3;
-    top:30%;
+    z-index: 105;
+    top:15%;
     padding: 3%;
     box-sizing: border-box;
+    margin-bottom: 20%;
 
 }
-
 
 .button_close_modal{
 
   position: absolute;
   right: 5%;
+  background-color: orange;
+  border: 1px solid black;
+  border-radius: 15%;
+  cursor: pointer;
 }
 
 

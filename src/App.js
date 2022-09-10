@@ -4,7 +4,6 @@ import Criptos from './cripto_table';
 import axios from "axios";
 import { useEffect, useState } from 'react';
 
-
 //get the datat here
 
 function App() {
@@ -17,7 +16,7 @@ function App() {
     useEffect(() =>
     {
       axios.get("https://api.coincap.io/v2/assets").then((response) => {
-          setVariables(response.data.data);
+          setVariables(response.data.data.slice(0,30));
           setLoading(false);
 
       }).catch(error => {
@@ -34,7 +33,7 @@ function App() {
             <Route path="/">
             <br></br><h1>Crypto Currencies At a Glance</h1>
             {/* {variables && <Search variables={variables} error={error} loading={loading}></Search>} */}
-            {variables && <Criptos variables={variables} error={error} loading={loading} ></Criptos>}
+            {variables && <Criptos setvar={setVariables} variables={variables} error={error} loading={loading} ></Criptos>}
             
             
             </Route>

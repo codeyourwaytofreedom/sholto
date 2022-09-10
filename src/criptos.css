@@ -6,14 +6,28 @@
   font-family: 'Oswald', serif;
 }
 
+
 .panel {
         position: absolute;
         width: 90%; left:5%;
-        height: 700px;
         padding-top: 2%;
-        margin-bottom: 4%;
         z-index: 2;
 }
+
+.open_favs_button{
+  z-index: 4;
+  position: fixed;
+  right: 4%;
+  top:89%;
+  border-radius: 10%;
+  border: 1px solid rgba(255, 166, 0, 0.918);
+  color:rgb(39, 38, 38);
+  box-shadow: inset 1px  1px 10px orange;
+  font-size: 1.5vw;
+  width: 10%; height: 10%;
+  cursor: pointer;
+}
+
 
 .panel__table {
     width: 70%;
