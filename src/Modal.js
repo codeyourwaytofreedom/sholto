@@ -7,14 +7,14 @@ const Modal = ({ open, close, favs, vars }) => {
         return (
 
             <div className="modal-favs">
-                <button onClick={close}>Close Modal</button>
+                <button className='button_close_modal' onClick={close}>Close Modal</button><br></br><br></br>
                 {
                    favs.map((f) =>  vars.map((v) => v.name === f && 
                    
                    <div className='modal-favs__favitem' key={v.rank}>
-                            <div className="modal-favs__favitem--cell"> {v.name}</div>
-                            <div className="modal-favs__favitem--cell">{v.priceUsd} </div>
-                            <div className="modal-favs__favitem--cell">{v.changePercent24Hr} </div>
+                            <div className="modal-favs__favitem__cell--name"> {v.name}</div>
+                            <div className="modal-favs__favitem__cell">${v.priceUsd} </div>
+                            <div className="modal-favs__favitem__cell" style={{color: v.changePercent24Hr.includes("-") ? "red" : "#9ACD32"}}>{v.changePercent24Hr.substring(0, 11)} </div>
                    </div> )) 
                     
 
