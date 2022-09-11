@@ -23,6 +23,7 @@ const Modal = ({ open, close, favs, vars }) => {
                         <div className="modal-favs">
                             <button className='button_close_modal' onClick={close}>Close</button><br></br><br></br>
                             {
+                            favs.length < 1 ? <h1 style={{color:"white"}}>No Favourite Coins Yet!</h1> :
                             favs.map((f) =>  vars.map((v) => v.name === f && 
                             
                             <div className='modal-favs__favitem' key={v.rank}>
