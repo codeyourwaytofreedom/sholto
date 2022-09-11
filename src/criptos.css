@@ -34,6 +34,7 @@
     margin-left: 15%;
     z-index: 2;
     position: absolute;
+    padding-bottom: 5%;
 }
 
 .panel__tablecell, .panel__tablecell--change, .panel__tablecell--name {
@@ -55,14 +56,25 @@
 
 .searchbar{
   display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap:1%;
   position: relative;
-  width: 40%;
-  left: 30%;
+  width: 70%;
+  left: 15%;
   margin-bottom: 2%;
+  align-items: center;
   
 }
 
-.searchbar__text{
+.searchbar__input{
   font-size: 1.7em;
-  padding-left: 5%;
+  padding-left: 15%;
+  box-shadow: inset 3px 3px 3px khaki;  
+  border: 1px solid silver;
+}
+
+.filter_dropdown {
+  font-size: 1.7vw;
+  padding-left: 1%;
+  height: 100%;
 }

@@ -16,7 +16,7 @@ function App() {
     useEffect(() =>
     {
       axios.get("https://api.coincap.io/v2/assets").then((response) => {
-          setVariables(response.data.data.slice(0,30));
+          setVariables(response.data.data.slice(0,70));
           setLoading(false);
 
       }).catch(error => {

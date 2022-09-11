@@ -1,7 +1,7 @@
 import './criptos.css';
 import { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart, faHeartBroken } from '@fortawesome/free-solid-svg-icons'
+import { faHeart,faArrowDown, faHeartBroken } from '@fortawesome/free-solid-svg-icons'
 import Modal from './Modal';
 import Open_favs from './open_favs_button';
 
@@ -18,7 +18,7 @@ const Criptos = ({variables, error, loading, setvar}) => {
     const [ar,setAr] = useState([])
     const heart = <FontAwesomeIcon size={"xl"} icon={faHeart} style={{color:"orange", cursor: 'pointer'}} />
     const brokenheart = <FontAwesomeIcon  size={"xl"} icon={faHeartBroken} style={{color:"black", cursor: 'pointer'}} />
-
+    const arrow = <FontAwesomeIcon  size={"xl"} icon={faArrowDown} style={{color:"black", cursor: 'pointer'}} />
     const check_ar = (a) => { 
         console.log(a)
         // setAr()
@@ -64,22 +64,23 @@ const Criptos = ({variables, error, loading, setvar}) => {
     return ( 
 
             <div className="panel">
-                 <select onChange={(e) => setFilter(e.target.selectedIndex)} name="cars" id="cars">
-                    <option value="bynameA">By Name - Ascending</option>
-                    <option value="bynameD">By Name - Descending</option>
-                    <option value="bypriceA">By Price - Ascending</option>
-                    <option value="bypriceD">By Price - Descending</option>
-                </select>
-
+            
                 <Open_favs open = {favs_open} setOpen={setOpen}></Open_favs>
                 {loading && <h1>Coins are loading...</h1>}
 
                     {         variables &&        
                     <div className="searchbar">
-                        <input className="searchbar__text" type="text"
+                        <input className="searchbar__input" type="text"
                             value={searched_text} required
                             onChange={(e) => {setST(e.target.value)}}
                             placeholder="search for coins"></input>
+                            
+                            <select onChange={(e) => setFilter(e.target.selectedIndex)} className="filter_dropdown">
+                                <option value="bynameA" >By Name - Ascending</option>
+                                <option value="bynameD">By Name - Descending</option>
+                                <option value="bypriceA">By Price - Ascending</option>
+                                <option data-image={{}} value="bypriceD">By Price - Descending</option>
+                            </select>
                     </div>
                 }
 
@@ -112,6 +113,7 @@ const Criptos = ({variables, error, loading, setvar}) => {
                                                                  
                             )
                             )}
+                    
                     </tbody>
                     </table>
                 }
@@ -238,8 +240,8 @@ const Criptos = ({variables, error, loading, setvar}) => {
 
                 <Modal vars={variables} open={favs_open} close={close_modal} favs = {ar}></Modal>
                 
-
             </div>
+            
             
      );
 
