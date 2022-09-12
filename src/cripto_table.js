@@ -1,24 +1,41 @@
 import './criptos.css';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart,faArrowDown, faHeartBroken } from '@fortawesome/free-solid-svg-icons'
 import Modal from './Modal';
 import Open_favs from './open_favs_button';
+import { useDispatch, useSelector } from 'react-redux';
+import { get_prices } from './redux/coin_info';
+import {add_to_list} from './redux/fav_list';
 
 
-
-// https://api.coincap.io/v2/assets
-
+let count = 1;
 
 const Criptos = ({variables, error, loading, setvar}) => {
-    let count = 1;
-    const [favs_open, setOpen ] = useState(false)
+    
+    const fav_list = useSelector((state) => state.favourites_list.favourites)
+    const dispatch = useDispatch()
+    useEffect (()=>{
+    dispatch(add_to_list(55))} ,[]);
+    
+
+        
+            
+        
+    
+    // dispatch(add_to_list(7))
+    console.log(fav_list)
+
     const [filter, setFilter] = useState(0)
     const [searched_text, setST] = useState("")
     const [ar,setAr] = useState([])
     const heart = <FontAwesomeIcon size={"xl"} icon={faHeart} style={{color:"orange", cursor: 'pointer'}} />
     const brokenheart = <FontAwesomeIcon  size={"xl"} icon={faHeartBroken} style={{color:"black", cursor: 'pointer'}} />
     const arrow = <FontAwesomeIcon  size={"xl"} icon={faArrowDown} style={{color:"black", cursor: 'pointer'}} />
+    
+   
+    
+    
     const check_ar = (a) => { 
         console.log(a)
         // setAr()
@@ -27,10 +44,6 @@ const Criptos = ({variables, error, loading, setvar}) => {
         else{setAr(ar.filter((x) => x!== a))}
         
         console.log(ar)
-    }
-
-    const close_modal = () => {
-        setOpen(false)
     }
 
     function compare (a,b) {
@@ -65,7 +78,9 @@ const Criptos = ({variables, error, loading, setvar}) => {
 
             <div className="panel">
             
-                <Open_favs open = {favs_open} setOpen={setOpen}></Open_favs>
+                <Open_favs></Open_favs>
+                <button onClick={ () => dispatch(add_to_list(9))  }>gggg</button>
+
                 {loading && <h1>Coins are loading...</h1>}
 
                     {         variables &&        
@@ -76,14 +91,13 @@ const Criptos = ({variables, error, loading, setvar}) => {
                             placeholder="search for coins"></input>
                             
                             <select onChange={(e) => setFilter(e.target.selectedIndex)} className="filter_dropdown">
-                                <option value="bynameA" >By Name - Ascending</option>
-                                <option value="bynameD">By Name - Descending</option>
-                                <option value="bypriceA">By Price - Ascending</option>
-                                <option data-image={{}} value="bypriceD">By Price - Descending</option>
+                                <option value="bynameA" >&#x21C8; By Name - Ascending </option>
+                                <option value="bynameD">&#x21CA; By Name  - Descending </option>
+                                <option value="bypriceA">&#x21C8; By Price   - Ascending</option>
+                                <option data-image={{}} value="bypriceD">&#x21CA; By Price   - Descending</option>
                             </select>
                     </div>
                 }
-
                 {
                     variables &&    searched_text.length > 2 && 
                     <table className='panel__table'>
@@ -238,7 +252,7 @@ const Criptos = ({variables, error, loading, setvar}) => {
                     </table>
                 }
 
-                <Modal vars={variables} open={favs_open} close={close_modal} favs = {ar}></Modal>
+                <Modal vars={variables} favs = {ar}></Modal>
                 
             </div>
             

@@ -4,9 +4,12 @@ import Criptos from './cripto_table';
 import axios from "axios";
 import { useEffect, useState } from 'react';
 
-//get the datat here
+
+
 
 function App() {
+
+
   const [variables, setVariables] = useState(null)
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true)
@@ -32,7 +35,6 @@ function App() {
         <Switch>
             <Route path="/">
             <br></br><h1>Crypto Currencies At a Glance</h1>
-            {/* {variables && <Search variables={variables} error={error} loading={loading}></Search>} */}
             {variables && <Criptos setvar={setVariables} variables={variables} error={error} loading={loading} ></Criptos>}
             
             

@@ -1,6 +1,8 @@
 import './modal.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { fav_close } from './redux/favourites_management';
 
-const Modal = ({ open, close, favs, vars }) => {
+const Modal = ({favs, vars }) => {
 
     const outer_shell_styles = {
         position:"fixed",
@@ -15,13 +17,15 @@ const Modal = ({ open, close, favs, vars }) => {
 
 
     }
+    const is_favs_open = useSelector((state) => state.favs_switch.is_it_open)
+    const dispatch = useDispatch()
     
-    if (open)
+    if (is_favs_open)
         return (
             <div className="modal_outer_shell" style={outer_shell_styles}>
 
                         <div className="modal-favs">
-                            <button className='button_close_modal' onClick={close}>Close</button><br></br><br></br>
+                            <button className='button_close_modal' onClick={()=> dispatch(fav_close())}>Close</button><br></br><br></br>
                             {
                             favs.length < 1 ? <h1 style={{color:"white"}}>No Favourite Coins Yet!</h1> :
                             favs.map((f) =>  vars.map((v) => v.name === f && 

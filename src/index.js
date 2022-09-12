@@ -2,13 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './criptos.css';
 import App from './App';
-import Open_favs from './open_favs_button';
+import { data_bank } from './redux/data_store';
+import { Provider } from 'react-redux';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <Provider store={data_bank}>
     <App />
-  </React.StrictMode>
+  </Provider>
 );
 
 
