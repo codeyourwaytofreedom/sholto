@@ -5,26 +5,19 @@ import { faHeart,faArrowDown, faHeartBroken } from '@fortawesome/free-solid-svg-
 import Modal from './Modal';
 import Open_favs from './open_favs_button';
 import { useDispatch, useSelector } from 'react-redux';
-import { get_prices } from './redux/coin_info';
-import {add_to_list} from './redux/fav_list';
+import {add_to_list, remove_from_list} from './redux/fav_list';
 
 
-let count = 1;
+
 
 const Criptos = ({variables, error, loading, setvar}) => {
-    
+    let count = 1;
     const fav_list = useSelector((state) => state.favourites_list.favourites)
     const dispatch = useDispatch()
-    useEffect (()=>{
-    dispatch(add_to_list(55))} ,[]);
-    
 
-        
-            
-        
+                 
     
-    // dispatch(add_to_list(7))
-    console.log(fav_list)
+    console.log(fav_list, "after add")
 
     const [filter, setFilter] = useState(0)
     const [searched_text, setST] = useState("")
@@ -37,13 +30,9 @@ const Criptos = ({variables, error, loading, setvar}) => {
     
     
     const check_ar = (a) => { 
-        console.log(a)
-        // setAr()
-        if (!ar.includes(a))
-        {setAr([...ar, a]);}
-        else{setAr(ar.filter((x) => x!== a))}
-        
-        console.log(ar)
+        if (!fav_list.includes(a))
+        {dispatch(add_to_list(a))}
+        else{dispatch(remove_from_list(a))}
     }
 
     function compare (a,b) {
@@ -79,7 +68,7 @@ const Criptos = ({variables, error, loading, setvar}) => {
             <div className="panel">
             
                 <Open_favs></Open_favs>
-                <button onClick={ () => dispatch(add_to_list(9))  }>gggg</button>
+                {/* <button onClick={ () => dispatch(add_to_list(9))  }>gggg</button> */}
 
                 {loading && <h1>Coins are loading...</h1>}
 
@@ -116,7 +105,7 @@ const Criptos = ({variables, error, loading, setvar}) => {
                                 
                             <tr className='panel__tablerow' key={varr.id}>
                                     <th className='panel__tablecell--position'>{count++}</th>
-                                    <th onClick={() => check_ar(varr.name)}  className='panel__tablecell'>   { ar.includes(varr.name) ? heart : brokenheart}  </th>
+                                    <th onClick={() => check_ar(varr.name)}  className='panel__tablecell'>   { fav_list.includes(varr.name) ? heart : brokenheart}  </th>
                                     <th className='panel__tablecell--name' style={{color: varr.changePercent24Hr.includes("-") ? "red" : "green"}}>{varr.name}</th>
                                     <th className='panel__tablecell' style={{color: varr.changePercent24Hr.includes("-") ? "red" : "green"}}>${varr.priceUsd.substring(0, 11)}</th>
                                     <th id='change' className='panel__tablecell--change' style={{color: varr.changePercent24Hr.includes("-") ? "red" : "green"}}>
@@ -161,7 +150,7 @@ const Criptos = ({variables, error, loading, setvar}) => {
 
                                 <tr className='panel__tablerow' key={varr.id}>
                                     <th className='panel__tablecell--position'>{count++}</th>
-                                    <th onClick={() => check_ar(varr.name)} className='panel__tablecell' >  { ar.includes(varr.name) ? heart : brokenheart} </th>
+                                    <th onClick={() => check_ar(varr.name)} className='panel__tablecell' >  { fav_list.includes(varr.name) ? heart : brokenheart} </th>
                                     <th className='panel__tablecell--name' style={{color: varr.changePercent24Hr.includes("-") ? "red" : "green"}}>{varr.name}</th>
                                     <th className='panel__tablecell' style={{color: varr.changePercent24Hr.includes("-") ? "red" : "green"}}>${varr.priceUsd.substring(0, 11)}</th>
                                     <th id='change' className='panel__tablecell--change' style={{color: varr.changePercent24Hr.includes("-") ? "red" : "green"}}>
@@ -186,7 +175,7 @@ const Criptos = ({variables, error, loading, setvar}) => {
     
                                     <tr className='panel__tablerow' key={varr.id}>
                                         <th className='panel__tablecell--position'>{count++}</th>
-                                        <th onClick={() => check_ar(varr.name)} className='panel__tablecell' >  { ar.includes(varr.name) ? heart : brokenheart} </th>
+                                        <th onClick={() => check_ar(varr.name)} className='panel__tablecell' >  { fav_list.includes(varr.name) ? heart : brokenheart} </th>
                                         <th className='panel__tablecell--name' style={{color: varr.changePercent24Hr.includes("-") ? "red" : "green"}}>{varr.name}</th>
                                         <th className='panel__tablecell' style={{color: varr.changePercent24Hr.includes("-") ? "red" : "green"}}>${varr.priceUsd.substring(0, 11)}</th>
                                         <th id='change' className='panel__tablecell--change' style={{color: varr.changePercent24Hr.includes("-") ? "red" : "green"}}>
@@ -211,7 +200,7 @@ const Criptos = ({variables, error, loading, setvar}) => {
     
                                     <tr className='panel__tablerow' key={varr.id}>
                                         <th className='panel__tablecell--position'>{count++}</th>
-                                        <th onClick={() => check_ar(varr.name)} className='panel__tablecell' >  { ar.includes(varr.name) ? heart : brokenheart} </th>
+                                        <th onClick={() => check_ar(varr.name)} className='panel__tablecell' >  { fav_list.includes(varr.name) ? heart : brokenheart} </th>
                                         <th className='panel__tablecell--name' style={{color: varr.changePercent24Hr.includes("-") ? "red" : "green"}}>{varr.name}</th>
                                         <th className='panel__tablecell' style={{color: varr.changePercent24Hr.includes("-") ? "red" : "green"}}>${varr.priceUsd.substring(0, 11)}</th>
                                         <th id='change' className='panel__tablecell--change' style={{color: varr.changePercent24Hr.includes("-") ? "red" : "green"}}>
@@ -236,7 +225,7 @@ const Criptos = ({variables, error, loading, setvar}) => {
     
                                     <tr className='panel__tablerow' key={varr.id}>
                                         <th className='panel__tablecell--position'>{count++}</th>
-                                        <th onClick={() => check_ar(varr.name)} className='panel__tablecell' >  { ar.includes(varr.name) ? heart : brokenheart} </th>
+                                        <th onClick={() => check_ar(varr.name)} className='panel__tablecell' >  { fav_list.includes(varr.name) ? heart : brokenheart} </th>
                                         <th className='panel__tablecell--name' style={{color: varr.changePercent24Hr.includes("-") ? "red" : "green"}}>{varr.name}</th>
                                         <th className='panel__tablecell' style={{color: varr.changePercent24Hr.includes("-") ? "red" : "green"}}>${varr.priceUsd.substring(0, 11)}</th>
                                         <th id='change' className='panel__tablecell--change' style={{color: varr.changePercent24Hr.includes("-") ? "red" : "green"}}>
@@ -252,7 +241,7 @@ const Criptos = ({variables, error, loading, setvar}) => {
                     </table>
                 }
 
-                <Modal vars={variables} favs = {ar}></Modal>
+                <Modal vars={variables}></Modal>
                 
             </div>
             

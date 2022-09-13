@@ -2,7 +2,7 @@ import './modal.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { fav_close } from './redux/favourites_management';
 
-const Modal = ({favs, vars }) => {
+const Modal = ({vars }) => {
 
     const outer_shell_styles = {
         position:"fixed",
@@ -18,6 +18,7 @@ const Modal = ({favs, vars }) => {
 
     }
     const is_favs_open = useSelector((state) => state.favs_switch.is_it_open)
+    const fav_list = useSelector((state) => state.favourites_list.favourites)
     const dispatch = useDispatch()
     
     if (is_favs_open)
@@ -27,8 +28,8 @@ const Modal = ({favs, vars }) => {
                         <div className="modal-favs">
                             <button className='button_close_modal' onClick={()=> dispatch(fav_close())}>Close</button><br></br><br></br>
                             {
-                            favs.length < 1 ? <h1 style={{color:"white"}}>No Favourite Coins Yet!</h1> :
-                            favs.map((f) =>  vars.map((v) => v.name === f && 
+                            fav_list.length < 1 ? <h1 style={{color:"white"}}>No Favourite Coins Yet!</h1> :
+                            fav_list.map((f) =>  vars.map((v) => v.name === f && 
                             
                             <div className='modal-favs__favitem' key={v.rank}>
                                         <div className="modal-favs__favitem__cell--name"> {v.name}</div>
